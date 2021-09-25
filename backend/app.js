@@ -1,5 +1,4 @@
 const express = require('express');
-const data = require('./data');
 const app = express();
 
 const ClothesRoutes = require('./controllers/clothes.routes.js');
