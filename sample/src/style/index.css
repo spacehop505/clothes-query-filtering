@@ -1,0 +1,25 @@
+body {
+  margin: 0;
+  font-family: "Segoe UI";
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+  margin-top: 5px;
+  border: solid 1px rgb(0, 0, 0);
+  background-color: rgb(240, 240, 240);
+}
+
+main {
+  height: auto;
+  width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  border: solid 0px rgb(172, 62, 62);
+}
+
+header {
+  display: flex;
+  width: auto;
+
+  border: solid 0px black;
+}

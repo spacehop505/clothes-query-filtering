@@ -42,6 +42,8 @@ router.get('/', (req, res, next) => {
     const queryDir = req.query.dir;
     const queryOrder = req.query.order;
 
+    console.log('queryDir', queryDir);
+    console.log('queryOrder', queryOrder);
 
     if (queryDir && queryOrder) {
         arrayORDER.push(`${queryDir}`);
@@ -58,6 +60,7 @@ router.get('/', (req, res, next) => {
 
     connection.promise().query(query)
         .then(([rows, fields]) => {
+            console.log(rows);
             res.status(200).json({
                 count: rows.length,
                 content: rows
