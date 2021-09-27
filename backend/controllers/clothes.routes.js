@@ -1,9 +1,9 @@
+const mysql = require('mysql2');
+const path = require("path");
 const express = require('express');
 const router = express.Router();
 
-const mysql = require('mysql2');
-
-
+// get clothes from query parameters 
 router.get('/', (req, res, next) => {
     const connection = mysql.createConnection({
         host: 'localhost',
@@ -12,16 +12,16 @@ router.get('/', (req, res, next) => {
         password: 'admin'
     });
 
-
     const arrayWHERE = [];
     const arrayORDER = [];
-    const arrayJOIN = [];
+    const arrayJoinCategory = [];
+    const arrayJoinBranding = [];
 
     const queryPrice = req.query.price;
     const querySize = req.query.size;
     const queryMaterial = req.query.material;
-
-
+    const queryCategory = req.query.category;
+    const queryBranding = req.query.brand;
 
     if (queryPrice) {
         arrayWHERE.push(`price=${queryPrice}`);
@@ -32,37 +32,102 @@ router.get('/', (req, res, next) => {
     if (queryMaterial) {
         arrayWHERE.push(`material='${queryMaterial}'`);
     }
-
-    const queryCategory = req.query.category;
     if (queryCategory) {
-        arrayJOIN.push(`true`);
+        arrayJoinCategory.push(`true`);
         arrayWHERE.push(`category_category_id='${queryCategory}'`);
     }
-
+    if (queryBranding) {
+        arrayJoinBranding.push(`true`);
+        arrayWHERE.push(`branding_branding_id='${queryBranding}'`);
+    }
     const queryDir = req.query.dir;
     const queryOrder = req.query.order;
-
-    console.log('queryDir', queryDir);
-    console.log('queryOrder', queryOrder);
 
     if (queryDir && queryOrder) {
         arrayORDER.push(`${queryDir}`);
         arrayORDER.push(`${queryOrder}`);
     }
 
-    console.log(queryPrice, querySize, arrayWHERE);
-    console.log(queryDir, queryOrder, arrayORDER);
-    const query = `SELECT * FROM clothing 
-    ${arrayJOIN.length ? `inner join category on clothing.category_category_id = category.category_id` : ''}
+    console.log('\nQUERY PARAMETERS => ', 'queryPrice:', queryPrice, ',querySize:', querySize, ',queryMaterial:', queryMaterial, ',arrayWHERE:', arrayWHERE);
+    console.log('QUERY PARAMETERS => ', 'queryDir:', queryDir, ',queryOrder:', queryOrder, ',arrayORDER:', arrayORDER);
+    const query = `SELECT * FROM clothing inner join category on clothing.category_category_id = category.category_id inner join branding on clothing.branding_branding_id = branding.branding_id
+  
     ${arrayWHERE.length ? `WHERE ${arrayWHERE.join(' AND ')}` : ''} 
     ${arrayORDER.length ? `ORDER BY ${arrayORDER[1]} ${arrayORDER[0]}` : ''} `;
-    console.log(query);
 
-    connection.promise().query(query)
+    final_query = query.replace(/(\r\n|\n|\r)/gm, "");
+    console.log('SQL QUERY => ', final_query);
+
+    // ${arrayJoinCategory.length ? `inner join category on clothing.category_category_id = category.category_id` : ''}
+    // ${arrayJoinBranding.length ? `inner join branding on clothing.branding_branding_id = branding.branding_id` : ''}
+    connection.promise().query(final_query)
         .then(([rows, fields]) => {
-            console.log(rows);
             res.status(200).json({
-                count: rows.length,
+                content: rows
+            });
+        }).catch(err => {
+            console.log(err);
+        }).then(() => {
+            connection.end();
+        });
+});
+
+
+router.get('/product/:id', (req, res, next) => {
+    const connection = mysql.createConnection({
+        host: 'localhost',
+        user: 'root',
+        database: 'clothes',
+        password: 'admin'
+    });
+    connection.promise().query(`SELECT * FROM clothing inner join category on clothing.category_category_id = category.category_id inner join branding on clothing.branding_branding_id = branding.branding_id where clothing_id=?`, [req.params.id])
+        .then(([rows, fields]) => {
+            res.status(200).json({
+                content: rows
+            });
+        }).catch(err => {
+            console.log(err);
+        }).then(() => {
+            connection.end();
+        });
+});
+
+// get image file from hyperlink
+router.get('/image/:name', (req, res, next) => {
+    res.sendFile(path.join(__dirname, `./images/${req.params.name}`));
+});
+
+
+router.get('/branding', (req, res, next) => {
+    const connection = mysql.createConnection({
+        host: 'localhost',
+        user: 'root',
+        database: 'clothes',
+        password: 'admin'
+    });
+    connection.promise().query(`select * from branding;`)
+        .then(([rows, fields]) => {
+            res.status(200).json({
+                content: rows
+            });
+        }).catch(err => {
+            console.log(err);
+        }).then(() => {
+            connection.end();
+        });
+});
+
+
+router.get('/category', (req, res, next) => {
+    const connection = mysql.createConnection({
+        host: 'localhost',
+        user: 'root',
+        database: 'clothes',
+        password: 'admin'
+    });
+    connection.promise().query(`select * from category;`)
+        .then(([rows, fields]) => {
+            res.status(200).json({
                 content: rows
             });
         }).catch(err => {

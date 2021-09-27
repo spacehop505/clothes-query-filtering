@@ -18,5 +18,5 @@ app.use('/clothing', ClothesRoutes);
 
 // Start server on PORT 5000
 app.listen(5000, () => {
-    console.log('Server started!');
+    console.log('Server started!\n');
 });
