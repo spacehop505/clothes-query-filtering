@@ -94,7 +94,6 @@ const Clothing = () => {
     return (
         <div className='container'>
 
-
             <div className='columns is-multiline  has-background-grey-lighter '>
 
                 <div className='column is-one-quarter  p-2 '>
@@ -173,19 +172,14 @@ const ClothesData = ({ arrayOfClothes }) => {
         <div className="columns is-multiline  ">
             {arrayOfClothes.map(result => (
                 <div key={result.clothing_id} className='column is-one-third  '>
-                    <Link to={`/clothing/product/${result.clothing_id}`} >
-                        <figure className='image is-4by5 '>
-                            <img alt={result.image_name} src={result.image_hyperlink}></img>
-                        </figure>
-                    </Link >
+                    <figure className='image is-4by5 '>
+                        <img alt={result.image_name} src={result.image_hyperlink}></img>
+                    </figure>
                     <p >{result.size}</p>
                     <p className="column p-0 is-italic has-text-weight-semibold">{result.branding_name}</p>
-                    <Link to={`/clothing/product/${result.clothing_id}`} >
-                        <p className='a1'>{result.name}</p>
-                    </Link >
+                    <p className='a1'>{result.name}</p>
                     <p className="column p-0  has-text-weight-semibold">€{result.price}</p>
                 </div>
-
             ))}
         </div>
     );
