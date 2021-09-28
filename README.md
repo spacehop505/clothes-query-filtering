@@ -19,9 +19,9 @@
 | category=  | [1]  |
 | brand=  | [1]  |
 
-> client-frontend - localhost:3000/clothing?size=m&material=cotton&dir=desc&order=price&category=1&brand=1
+> client-frontend - localhost:3000/clothing?size=m&material=cotton&dir=desc&order=price
 
-> backend - localhost:5000/clothing?size=m&material=cotton&dir=desc&order=price&category=1&brand=1
+> backend - localhost:5000/clothing?size=m&material=cotton&dir=desc&order=price
 
 ## **MYSQL Schema**
 
