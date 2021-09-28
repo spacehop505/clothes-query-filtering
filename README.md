@@ -11,5 +11,5 @@ Query Parameters:
 - category=1 - [id]
 - brand=1 - [id]
 
-- http://localhost:3000/clothing?size=m&material=cotton&dir=desc&order=price&category=1&brand=1
+- localhost:3000/clothing?size=m&material=cotton&dir=desc&order=price&category=1&brand=1
 
