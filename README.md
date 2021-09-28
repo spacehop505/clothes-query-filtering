@@ -4,13 +4,12 @@
 
 
 Query Parameters:
-```
-size=m - [s,m,l]
-material=cotton - [cotton, silk]
-dir=desc - [desc, asc] 
-order=price - [price]
-category=1 - [id]
-brand=1 - [id]
+- size=m - [s,m,l]
+- material=cotton - [cotton, silk]
+- dir=desc - [desc, asc] 
+- order=price - [price]
+- category=1 - [id]
+- brand=1 - [id]
 
-http://localhost:3000/clothing?size=m&material=cotton&dir=desc&order=price&category=1&brand=1
-```
+- http://localhost:3000/clothing?size=m&material=cotton&dir=desc&order=price&category=1&brand=1
+
