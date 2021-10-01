@@ -1,15 +1,24 @@
-# project-clothing-query-filter
+## React.js Frontend
 ![ezgif com-gif-maker](https://user-images.githubusercontent.com/65245922/135147757-ce310d3f-3fb0-4ada-9d63-d9428be9c4ee.gif)
 
-## **Backend and Frontend**
-    backend/ npm install
-    client-frontend/ npm install
-    
-- backend tech: nodejs, express, mysql
-- frontend tech: nodejs, react, bulma
+## Installation
+backend
+```
+npm install
+``` 
+client-frontend
+```
+npm install
+``` 
+
+## Developed In 
+backend: 
+ - nodejs, express, mysql
+
+client-frontend:
+ - nodejs, react, bulma
 
 ## **Query Parameters**
-
 | Query Parameters  | Values |
 | ------------- | ------------- |
 | size=  | [s,m,l]  |
