@@ -29,7 +29,7 @@ client-frontend:
  - nodejs, react, bulma
 
 ## Query Parameters
-| Query Parameters  | Values |
+| Query Params  | Values |
 | ------------- | ------------- |
 | size=  | [s,m,l]  |
 | material=  | [cotton, silk]  |
