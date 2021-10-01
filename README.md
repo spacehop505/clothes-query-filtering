@@ -1,15 +1,25 @@
-## React.js Frontend
+## Preview - React.js Frontend
 ![ezgif com-gif-maker](https://user-images.githubusercontent.com/65245922/135147757-ce310d3f-3fb0-4ada-9d63-d9428be9c4ee.gif)
 
+## Preview - Node.js Express Backend
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/65245922/135597797-1cde2849-7317-4b52-886d-16322e1f3fdb.gif)
+
+## Preview - MYSQL Schema
+![dasdasdas](https://user-images.githubusercontent.com/65245922/135150814-e09ff2af-bc32-47ab-b88f-e3e1d8183f84.png)
+
 ## Installation
-backend
+Folder backend/
 ```
 npm install
 ``` 
-client-frontend
+Folder client-frontend/
 ```
 npm install
 ``` 
+Folder schema/
+```
+cloting-schema.mwb
+```
 
 ## Developed In 
 backend: 
@@ -18,7 +28,7 @@ backend:
 client-frontend:
  - nodejs, react, bulma
 
-## **Query Parameters**
+## Query Parameters
 | Query Parameters  | Values |
 | ------------- | ------------- |
 | size=  | [s,m,l]  |
@@ -28,14 +38,15 @@ client-frontend:
 | category=  | [1]  |
 | brand=  | [1]  |
 
-> client-frontend - localhost:3000/clothing?size=m&material=cotton&dir=desc&order=price
+## URI Structure
+backend:
+```
+localhost:5000/clothing?size=m&material=cotton&dir=desc&order=price
+```
+client-frontend:
+```
+localhost:3000/clothing?size=m&material=cotton&dir=desc&order=price
+```
 
-> backend - localhost:5000/clothing?size=m&material=cotton&dir=desc&order=price
-
-## **MYSQL Schema**
-
-sql schema/cloting-schema.mwb
-
-![dasdasdas](https://user-images.githubusercontent.com/65245922/135150814-e09ff2af-bc32-47ab-b88f-e3e1d8183f84.png)
 
 
