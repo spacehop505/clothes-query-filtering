@@ -35,8 +35,8 @@ client-frontend:
 | material=  | [cotton, silk]  |
 | dir=  | [desc, asc]  |
 | order=  | [price]  |
-| category=  | [1]  |
-| brand=  | [1]  |
+| category=  | [1] category_id | 
+| brand=  | [1] branding_id | 
 
 ## URI Structure
 backend:
@@ -47,6 +47,4 @@ client-frontend:
 ```
 localhost:3000/clothing?size=m&material=cotton&dir=desc&order=price
 ```
-
-
 
