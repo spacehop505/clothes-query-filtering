@@ -12,14 +12,23 @@ Folder backend/
 ```
 npm install
 ``` 
+```
+npm start
+``` 
 Folder client-frontend/
 ```
 npm install
+``` 
+```
+npm start
 ``` 
 Folder schema/
 ```
 cloting-schema.mwb
 ```
+
+
+
 
 ## Developed In 
 backend: 
