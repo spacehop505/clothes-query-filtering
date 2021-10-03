@@ -26,6 +26,7 @@ const Clothing = () => {
     const [getQueryParameters, setQueryParameters] = useState([]);
     const [getCopyQueryParameter, setCopyQueryParameters] = useState({ size: '', dir: '', material: '', category: '', brand: '' });
 
+    // Dropdown Update Values 
     const selectValue = (event) => {
         const fieldName = event.target.getAttribute('name');
         const fieldValue = event.target.value;
@@ -39,57 +40,70 @@ const Clothing = () => {
         const queryMaterial = newCopyQueryParameter['material'];
         const queryCategory = newCopyQueryParameter['category'];
         const queryBrand = newCopyQueryParameter['brand'];
-        if (querySize != '') {
+        if (querySize) {
             queryParameters.push(`size=${querySize}`);
         }
-        if (queryMaterial != '') {
+        if (queryMaterial) {
             queryParameters.push(`material=${queryMaterial}`);
         }
-        if (queryDir != '') {
+        if (queryDir) {
             queryParameters.push(`dir=${queryDir}`);
             queryParameters.push(`order=price`);
         }
-        if (queryCategory != '') {
+        if (queryCategory) {
             queryParameters.push(`category=${queryCategory}`);
         }
-        if (queryBrand != '') {
+        if (queryBrand) {
             queryParameters.push(`brand=${queryBrand}`);
         }
         setQueryParameters(queryParameters);
         console.log('queryParameters:', queryParameters, ' ,join():', queryParameters.join('&'));
     }
 
-
     const AxiosGetClothes = async () => {
-        const res = await api.get(`/clothing?${getQueryParameters.join('&')}`);
-        setClothes(res.data.content);
-        console.log('[GET] -', res.data.content);
-    }
-
-    useEffect(() => {
-        const onLoadGetClothing = async () => {
-            const res = await api.get(`/clothing?${onLoadQueryParameters.join('&')}`);
-            setClothes(res.data.content);
-            console.log('\nCLIENT FRONTEND \n[GET] useEffect():', res.data.content);
+        try {
+            const res = await api.get(`/clothing?${getQueryParameters.join('&')}`);
+            setClothes(res.data.success.content);
+            console.log('[GET] -', res.data.success.content);
+        } catch (err) {
+            console.log(err.response);
+            setClothes([]);
         }
-        onLoadGetClothing();
+    };
 
-
-        const onLoadGetBranding = async () => {
-            const res = await api.get(`/clothing/branding`);
-            setBranding(res.data.content);
-            console.log('\nCLIENT FRONTEND \n[GET] useEffect():', res.data.content);
-        }
-        onLoadGetBranding();
-
-        const onLoadGetCategory = async () => {
+    useEffect(async () => {
+        try {
             const res = await api.get(`/clothing/category`);
-            setCategory(res.data.content);
-            console.log('\nCLIENT FRONTEND \n[GET] useEffect():', res.data.content);
+            setCategory(res.data.success.content);
+            console.log('\nCLIENT FRONTEND \n[GET] useEffect():', res.data.success.content);
+        } catch (err) {
+            console.log(err.response);
+            setCategory([]);
         }
-        onLoadGetCategory();
-
     }, []);
+
+    useEffect(async () => {
+        try {
+            const res = await api.get(`/clothing/branding`);
+            setBranding(res.data.success.content);
+            console.log('\nCLIENT FRONTEND \n[GET] useEffect():', res.data.success.content);
+        } catch (err) {
+            console.log(err.response);
+            setBranding([]);
+        }
+    }, []);
+
+    useEffect(async () => {
+        try {
+            const res = await api.get(`/clothing?${onLoadQueryParameters.join('&')}`);
+            setClothes(res.data.success.content);
+            console.log('\nCLIENT FRONTEND \n[GET] useEffect():', res.data.success.content);
+        } catch (err) {
+            console.log(err.response);
+            setClothes([]);
+        }
+    }, []);
+
     // is-gapless
     return (
         <div className='container'>
@@ -167,6 +181,8 @@ const Clothing = () => {
     )
 };
 
+
+// Clothing Data Component 
 const ClothesData = ({ arrayOfClothes }) => {
     return (
         <div className="columns is-multiline  ">
