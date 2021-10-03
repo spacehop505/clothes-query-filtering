@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 
-const ClothesRoutes = require('./controllers/clothes.routes.js');
+const routeClothing = require('./routes/routeClothing');
 
 
 app.use(express.json());
@@ -13,10 +13,11 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use('/clothing', ClothesRoutes);
+app.use('/clothing', routeClothing);
 
 
 // Start server on PORT 5000
-app.listen(5000, () => {
-    console.log('Server started!\n');
+const port = 5000;
+app.listen(port, () => {
+    console.log(`Server started! Port ${port} \n`);
 });
