@@ -1,23 +1,3 @@
-## Installation
-Folder backend/
-```
-npm install
-``` 
-```
-npm start
-``` 
-Folder client-frontend/
-```
-npm install
-``` 
-```
-npm start
-``` 
-Folder schema/
-```
-cloting-schema.mwb
-```
-
 ## Preview - React.js Frontend
 ### URI Structure
 client-frontend:
@@ -37,9 +17,25 @@ localhost:5000/clothing?size=m&material=cotton&dir=desc&order=price
 ## Preview - MYSQL Schema
 ![dasdasdas](https://user-images.githubusercontent.com/65245922/135150814-e09ff2af-bc32-47ab-b88f-e3e1d8183f84.png)
 
-
-
-
+## Installation
+Folder backend/
+```
+npm install
+``` 
+```
+npm start
+``` 
+Folder client-frontend/
+```
+npm install
+``` 
+```
+npm start
+``` 
+Folder schema/
+```
+cloting-schema.mwb
+```
 
 ## Developed In 
 backend: 
